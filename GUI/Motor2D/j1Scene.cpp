@@ -29,8 +29,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	// TODO 3: Create the image (rect {485, 829, 328, 103}) and the text "Hello World" as UI elements
-
+	App->gui->CreateImage({ 25, 25 }, { 485, 829, 328, 103 });
 
 	return true;
 }

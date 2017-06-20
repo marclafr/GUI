@@ -1,8 +1,10 @@
 #ifndef __j1GUI_H__
 #define __j1GUI_H__
 
-#include "j1Module.h"
+#include "SDL\include\SDL.h"
 #include <vector>
+#include "j1Module.h"
+#include "p2Point.h"
 
 #define CURSOR_WIDTH 2
 
@@ -10,11 +12,26 @@
 	//----------------||         UI         ||----------------\\
    //----------------||______________________||----------------\\
 
+class UI_Image;
+class UI_Text;
+class UI_Label;
+class UI_Button;
+class UI_AppearingLabel;
+class UI_HPBar;
+
 class UI_Element
 {
 protected:
+	UI_Element(iPoint pos, SDL_Rect atlas_rect);
+	~UI_Element();
+
 	iPoint pos;
 	SDL_Rect atlas_rect;
+
+public:
+	virtual bool Update();
+	virtual bool Draw(SDL_Texture* atlas);
+	//bool HandleInput()?????
 };
 
 // ---------------------------------------------------
@@ -42,8 +59,9 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	// TODO 2: Create the factory methods
 	// Gui creation functions
+	UI_Image* CreateImage(iPoint pos, SDL_Rect atlas_rect);
+	//-----------------------
 
 	const SDL_Texture* GetAtlas() const;
 

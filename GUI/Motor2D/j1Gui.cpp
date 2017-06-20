@@ -7,6 +7,15 @@
 #include "j1Input.h"
 #include "j1Gui.h"
 
+//UI_ELEMENTS
+#include "UI_AppearingLabel.h"
+#include "UI_Button.h"
+#include "UI_HPBar.h"
+#include "UI_Image.h"
+#include "UI_Label.h"
+#include "UI_Text.h"
+//----------
+
 j1Gui::j1Gui() : j1Module()
 {
 	name.assign("gui");
@@ -44,6 +53,9 @@ bool j1Gui::PreUpdate()
 // Called after all Updates
 bool j1Gui::PostUpdate()
 {
+	for (int i = 0; i < ui_elements.size(); i++)
+		ui_elements[i]->Draw(atlas);
+
 	return true;
 }
 
@@ -55,6 +67,14 @@ bool j1Gui::CleanUp()
 	return true;
 }
 
+UI_Image * j1Gui::CreateImage(iPoint pos, SDL_Rect atlas_rect)
+{
+	UI_Image* ret = nullptr;
+	ret = new UI_Image(pos, atlas_rect);
+	ui_elements.push_back(ret);
+	return ret;
+}
+
 // const getter for atlas
 const SDL_Texture* j1Gui::GetAtlas() const
 {
@@ -63,3 +83,20 @@ const SDL_Texture* j1Gui::GetAtlas() const
 
 // class Gui ---------------------------------------------------
 
+UI_Element::UI_Element(iPoint pos, SDL_Rect atlas_rect) : pos(pos), atlas_rect(atlas_rect)
+{
+}
+
+UI_Element::~UI_Element()
+{
+}
+
+bool UI_Element::Update()
+{
+	return true;
+}
+
+bool UI_Element::Draw(SDL_Texture* atlas)
+{
+	return true;
+}

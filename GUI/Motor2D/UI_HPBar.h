@@ -4,7 +4,7 @@
 #include "SDL\include\SDL.h"
 #include "j1Gui.h"
 
-class UI_Button : public UI_Element
+class UI_HPBar : public UI_Element
 {
 private:
 	SDL_Texture* tex;
