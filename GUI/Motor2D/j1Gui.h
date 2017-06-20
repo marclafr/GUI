@@ -2,10 +2,20 @@
 #define __j1GUI_H__
 
 #include "j1Module.h"
+#include <vector>
 
 #define CURSOR_WIDTH 2
 
-// TODO 1: Create your structure of classes
+	 //----------------||------------------||----------------\\
+	//----------------||         UI         ||----------------\\
+   //----------------||______________________||----------------\\
+
+class UI_Element
+{
+protected:
+	iPoint pos;
+	SDL_Rect atlas_rect;
+};
 
 // ---------------------------------------------------
 class j1Gui : public j1Module
@@ -41,6 +51,13 @@ private:
 
 	SDL_Texture* atlas;
 	std::string atlas_file_name;
+
+	std::vector<UI_Element*> ui_elements;
+
 };
+
+//	\\----------------||______________________||----------------//
+//	  \\----------------||__________________||----------------//
+//		\\----------------||--------------||----------------//
 
 #endif // __j1GUI_H__
