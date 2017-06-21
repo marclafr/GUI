@@ -47,6 +47,9 @@ bool j1Gui::Start()
 // Update all guis
 bool j1Gui::PreUpdate()
 {
+	for (int i = 0; i < ui_elements.size(); i++)
+		ui_elements[i]->Update(); 
+	
 	return true;
 }
 
@@ -71,6 +74,14 @@ UI_Image * j1Gui::CreateImage(iPoint pos, SDL_Rect atlas_rect)
 {
 	UI_Image* ret = nullptr;
 	ret = new UI_Image(pos, atlas_rect);
+	ui_elements.push_back(ret);
+	return ret;
+}
+
+UI_Button * j1Gui::CreateButton(iPoint pos, SDL_Rect atlas_rect_idle, SDL_Rect atlas_rect_mouse_on_top, SDL_Rect atlas_rect_clicking)
+{
+	UI_Button* ret = nullptr;
+	ret = new UI_Button(pos, atlas_rect_idle, atlas_rect_mouse_on_top, atlas_rect_clicking);
 	ui_elements.push_back(ret);
 	return ret;
 }

@@ -1,8 +1,8 @@
 #ifndef __j1GUI_H__
 #define __j1GUI_H__
 
-#include "SDL\include\SDL.h"
 #include <vector>
+#include "SDL\include\SDL.h"
 #include "j1Module.h"
 #include "p2Point.h"
 
@@ -61,6 +61,7 @@ public:
 
 	// Gui creation functions
 	UI_Image* CreateImage(iPoint pos, SDL_Rect atlas_rect);
+	UI_Button* CreateButton(iPoint pos, SDL_Rect atlas_rect_idle, SDL_Rect atlas_rect_mouse_on_top, SDL_Rect atlas_rect_clicking);
 	//-----------------------
 
 	const SDL_Texture* GetAtlas() const;

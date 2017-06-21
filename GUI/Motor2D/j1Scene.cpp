@@ -30,6 +30,7 @@ bool j1Scene::Awake()
 bool j1Scene::Start()
 {
 	App->gui->CreateImage({ 25, 25 }, { 485, 829, 328, 103 });
+	App->gui->CreateButton({ 100, 100 }, { 1101,1430, 132, 38 }, { 1085, 1385, 139, 44 }, { 1101,1430, 132, 38 });
 
 	return true;
 }
